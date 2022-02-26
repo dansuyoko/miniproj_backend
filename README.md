@@ -69,7 +69,6 @@
 
 ## **2. Setup Node.js Backend Project**
 
-
 - Open **_app.js_** & edit these lines to configure your database:
 
   ```javascript
@@ -87,459 +86,503 @@
   $ node app
   ```
 
-
-
 - **Done!**
 
 #
 
 ## **3. API Usage**
 
-- API in this project is divided into 2 groups namely *merchant* and *product*. How to access the API is as follows:
+- API in this project is divided into 2 groups namely _merchant_ and _product_. How to access the API is as follows:
 
 ### **1. Merchant**
 
 ##### **1. User Login with merchant ( POST /login )**
 
-*Parameters* : body
+_Parameters_ : body
 
-- name __(required, min: 3, max: 50)__
-- password __(required, min: 6)__
+- name **(required, min: 3, max: 50)**
+- password **(required, min: 6)**
 
-*Result* : JSON 
- 
-- status : 400 *Login failed*
+_Result_ : JSON
 
-    ```bash
-    {
-    "massage": "Data not found",
-    "data": []
-    }
-    ```
-- status : 400 *Login success*
-    ```bash
-    {
-    "massage": "Data is found",
-        "data": {
-            "token": token
-            }
-    }
+- status : 400 _Login failed_
+
+  ```bash
+  {
+  "massage": "Data not found",
+  "data": []
+  }
+  ```
+
+- status : 400 _Login success_
+  ```bash
+  {
+  "massage": "Data is found",
+      "data": {
+          "token": token
+          }
+  }
+  ```
 
 ##### **2. Get All Merchant ( GET /merchant )**
-*Parameters* : body
 
-- password __(required, min: 6)__
-- name __(required, min: 3, max 50)__
-- address __(required)__
-- join_date __(required, date)__
-- phone_number __(required, numeric)__
-- createdAt DEFAULT __current_timestamp()__
+_Parameters_ : body
 
-Authorization: *Bearer Token*
-- token from login response *required
+- password **(required, min: 6)**
+- name **(required, min: 3, max 50)**
+- address **(required)**
+- join_date **(required, date)**
+- phone_number **(required, numeric)**
+- createdAt DEFAULT **current_timestamp()**
 
+Authorization: _Bearer Token_
 
-*Result* : JSON 
-- status : 401 *Failed to get data when token isn't input*
+- token from login response \*required
 
-    ```bash
-    {
-        "message": "Unauthorized"
-    }
-    ```
-- status : 401 *Failed to get data when token invalid*
+_Result_ : JSON
 
-    ```bash
-    {
-        "message": "Invalid Token"
-    }
-    ```
-- status : 200 *Successed to get data merchant*
-    ```bash
-    {
-        "message": "Data is found"
-    }
-    ```
+- status : 401 _Failed to get data when token isn't input_
+
+  ```bash
+  {
+      "message": "Unauthorized"
+  }
+  ```
+
+- status : 401 _Failed to get data when token invalid_
+
+  ```bash
+  {
+      "message": "Invalid Token"
+  }
+  ```
+
+- status : 200 _Successed to get data merchant_
+  ```bash
+  {
+      "message": "Data is found"
+  }
+  ```
+
 ##### **3. Get Merchant Active ( GET /merchant )**
-*Parameters* : body
 
-- password __(required, min: 6)__
-- name __(required, min: 3, max 50)__
-- address __(required)__
-- join_date __(required, date)__
-- phone_number __(required, numeric)__
-- createdAt DEFAULT __current_timestamp()__
-- isDeleted __false__
+_Parameters_ : body
+
+- password **(required, min: 6)**
+- name **(required, min: 3, max 50)**
+- address **(required)**
+- join_date **(required, date)**
+- phone_number **(required, numeric)**
+- createdAt DEFAULT **current_timestamp()**
+- isDeleted **false**
 
 Authorization: Bearer Token
-- token from login response *required
 
+- token from login response \*required
 
-*Result* : JSON 
-- status : 401 *Failed to get data when token isn't input*
+_Result_ : JSON
 
-    ```bash
-    {
-        "message": "Unauthorized"
-    }
-    ```
-- status : 401 *Failed to get data when token invalid*
+- status : 401 _Failed to get data when token isn't input_
 
-    ```bash
-    {
-        "message": "Invalid Token"
-    }
-    ```
-- status : 200 *Successed to get data merchant*
-    ```bash
-    {
-        "message": "Data is found"
-    }
-    ```
+  ```bash
+  {
+      "message": "Unauthorized"
+  }
+  ```
+
+- status : 401 _Failed to get data when token invalid_
+
+  ```bash
+  {
+      "message": "Invalid Token"
+  }
+  ```
+
+- status : 200 _Successed to get data merchant_
+  ```bash
+  {
+      "message": "Data is found"
+  }
+  ```
 
 ##### **4. Insert merchant ( POST /merchant )**
 
 Authorization: Bearer Token
-- token from login response *required
 
+- token from login response \*required
 
-*Result* : JSON 
-- status : 401 *Failed to insert data when token isn't input*
+_Result_ : JSON
 
-    ```bash
-    {
-        "message": "Unauthorized"
-    }
-    ```
-- status : 401 *Failed to insert data when token invalid*
+- status : 401 _Failed to insert data when token isn't input_
 
-    ```bash
-    {
-        "message": "Invalid Token"
-    }
-    ```
-- status : 200 *Successed to insert data merchant*
-    ```bash
-    {
-        "message": "Data has been inserted"
-    }
-    ```
+  ```bash
+  {
+      "message": "Unauthorized"
+  }
+  ```
 
+- status : 401 _Failed to insert data when token invalid_
+
+  ```bash
+  {
+      "message": "Invalid Token"
+  }
+  ```
+
+- status : 200 _Successed to insert data merchant_
+  ```bash
+  {
+      "message": "Data has been inserted"
+  }
+  ```
 
 ##### **5. Update merchant ( PUT /merchant/id )**
 
 Authorization: Bearer Token
-- token from login response *required
 
+- token from login response \*required
 
-*Result* : JSON 
-- status : 401 *Failed to update data when token isn't input*
+_Result_ : JSON
 
-    ```bash
-    {
-        "message": "Unauthorized"
-    }
-    ```
-- status : 401 *Failed to update data when token invalid*
+- status : 401 _Failed to update data when token isn't input_
 
-    ```bash
-    {
-        "message": "Invalid Token"
-    }
-    ```
-- status : 200 *Successed to update data merchant*
-    ```bash
-    {
-        "message": "Data has been updated"
-    }
-    ```
+  ```bash
+  {
+      "message": "Unauthorized"
+  }
+  ```
+
+- status : 401 _Failed to update data when token invalid_
+
+  ```bash
+  {
+      "message": "Invalid Token"
+  }
+  ```
+
+- status : 200 _Successed to update data merchant_
+  ```bash
+  {
+      "message": "Data has been updated"
+  }
+  ```
+
 ##### **6. Delete merchant ( DEL /merchant/id )**
 
 Authorization: Bearer Token
-- token from login response *required
 
+- token from login response \*required
 
-*Result* : JSON 
-- status : 401 *Failed to delete data when token isn't input*
+_Result_ : JSON
 
-    ```bash
-    {
-        "message": "Unauthorized"
-    }
-    ```
-- status : 401 *Failed to delete data when token invalid*
+- status : 401 _Failed to delete data when token isn't input_
 
-    ```bash
-    {
-        "message": "Invalid Token"
-    }
-    ```
-- status : 200 *Successed to delete data merchant*
-    ```bash
-    {
-        "message": "Data has been deleted"
-    }
-    ```
+  ```bash
+  {
+      "message": "Unauthorized"
+  }
+  ```
+
+- status : 401 _Failed to delete data when token invalid_
+
+  ```bash
+  {
+      "message": "Invalid Token"
+  }
+  ```
+
+- status : 200 _Successed to delete data merchant_
+  ```bash
+  {
+      "message": "Data has been deleted"
+  }
+  ```
+
 ##### **5. SOFT Delete merchant ( PUT /merchant/id )**
 
 Authorization: Bearer Token
-- token from login response *required
 
-*Parameters* : body
+- token from login response \*required
 
+_Parameters_ : body
 
     {
         "isDeleted": true,
         "deletedAt":"{{currentdate}}"
     }
 
+_Result_ : JSON
 
+- status : 401 _Failed to soft delete data when token isn't input_
 
-*Result* : JSON 
-- status : 401 *Failed to soft delete data when token isn't input*
+  ```bash
+  {
+      "message": "Unauthorized"
+  }
+  ```
 
-    ```bash
-    {
-        "message": "Unauthorized"
-    }
-    ```
-- status : 401 *Failed to soft delete data when token invalid*
+- status : 401 _Failed to soft delete data when token invalid_
 
-    ```bash
-    {
-        "message": "Invalid Token"
-    }
-    ```
-- status : 200 *Successed to soft delete data merchant*
-    ```bash
-    {
-        "message": "Data has been updated"
-    }
-    ```
+  ```bash
+  {
+      "message": "Invalid Token"
+  }
+  ```
+
+- status : 200 _Successed to soft delete data merchant_
+  ```bash
+  {
+      "message": "Data has been updated"
+  }
+  ```
 
 ### **1. Product**
 
 ##### **1. User Login with product ( POST /login )**
 
-*Parameters* : body
+_Parameters_ : body
 
-- name __(required, min: 3, max: 50)__
-- password __(required, min: 6)__
+- name **(required, min: 3, max: 50)**
+- password **(required, min: 6)**
 
-*Result* : JSON 
- 
-- status : 400 *Login failed*
+_Result_ : JSON
 
-    ```bash
-    {
-    "massage": "Data not found",
-    "data": []
-    }
-    ```
-- status : 400 *Login success*
-    ```bash
-    {
-    "massage": "Data is found",
-        "data": {
-            "token": token
-            }
-    }
+- status : 400 _Login failed_
+
+  ```bash
+  {
+  "massage": "Data not found",
+  "data": []
+  }
+  ```
+
+- status : 400 _Login success_
+  ```bash
+  {
+  "massage": "Data is found",
+      "data": {
+          "token": token
+          }
+  }
+  ```
 
 ##### **2. Get All Product ( GET /product )**
-*Parameters* : body
 
-- password __(required, min: 6)__
-- name __(required, min: 3, max 50)__
-- address __(required)__
-- join_date __(required, date)__
-- phone_number __(required, numeric)__
-- createdAt DEFAULT __current_timestamp()__
+_Parameters_ : body
+
+- password **(required, min: 6)**
+- name **(required, min: 3, max 50)**
+- address **(required)**
+- join_date **(required, date)**
+- phone_number **(required, numeric)**
+- createdAt DEFAULT **current_timestamp()**
 
 Authorization: Bearer Token
+
 - token from login response **required**
 
+_Result_ : JSON
 
-*Result* : JSON 
-- status : 401 *Failed to get data when token isn't input*
+- status : 401 _Failed to get data when token isn't input_
 
-    ```bash
-    {
-        "message": "Unauthorized"
-    }
-    ```
-- status : 401 *Failed to get data when token invalid*
+  ```bash
+  {
+      "message": "Unauthorized"
+  }
+  ```
 
-    ```bash
-    {
-        "message": "Invalid Token"
-    }
-    ```
-- status : 200 *Successed to get data merchant*
-    ```bash
-    {
-        "message": "Data is found"
-    }
-    ```
+- status : 401 _Failed to get data when token invalid_
+
+  ```bash
+  {
+      "message": "Invalid Token"
+  }
+  ```
+
+- status : 200 _Successed to get data product_
+  ```bash
+  {
+      "message": "Data is found"
+  }
+  ```
+
 ##### **3. Get Product Active ( GET /merchant )**
-*Parameters* : body
 
-- password __(required, min: 6)__
-- name __(required, min: 3, max 50)__
-- address __(required)__
-- join_date __(required, date)__
-- phone_number __(required, numeric)__
-- createdAt DEFAULT __current_timestamp()__
-- isDeleted __false__
+_Parameters_ : body
+
+- password **(required, min: 6)**
+- name **(required, min: 3, max 50)**
+- address **(required)**
+- join_date **(required, date)**
+- phone_number **(required, numeric)**
+- createdAt DEFAULT **current_timestamp()**
+- isDeleted **false**
 
 Authorization: Bearer Token
+
 - token from login response **required**
 
-*Result* : JSON 
-- status : 401 *Failed to get data when token isn't input*
+_Result_ : JSON
 
-    ```bash
-    {
-        "message": "Unauthorized"
-    }
-    ```
-- status : 401 *Failed to get data when token invalid*
+- status : 401 _Failed to get data when token isn't input_
 
-    ```bash
-    {
-        "message": "Invalid Token"
-    }
-    ```
-- status : 200 *Successed to get data merchant*
-    ```bash
-    {
-        "message": "Data is found"
-    }
-    ```
+  ```bash
+  {
+      "message": "Unauthorized"
+  }
+  ```
+
+- status : 401 _Failed to get data when token invalid_
+
+  ```bash
+  {
+      "message": "Invalid Token"
+  }
+  ```
+
+- status : 200 _Successed to get data merchant_
+  ```bash
+  {
+      "message": "Data is found"
+  }
+  ```
 
 ##### **4. Insert merchant ( POST /merchant )**
 
 Authorization: Bearer Token
-- token from login response *required
 
+- token from login response \*required
 
-*Result* : JSON 
-- status : 401 *Failed to insert data when token isn't input*
+_Result_ : JSON
 
-    ```bash
-    {
-        "message": "Unauthorized"
-    }
-    ```
-- status : 401 *Failed to insert data when token invalid*
+- status : 401 _Failed to insert data when token isn't input_
 
-    ```bash
-    {
-        "message": "Invalid Token"
-    }
-    ```
-- status : 200 *Successed to insert data merchant*
-    ```bash
-    {
-        "message": "Data has been inserted"
-    }
-    ```
+  ```bash
+  {
+      "message": "Unauthorized"
+  }
+  ```
 
+- status : 401 _Failed to insert data when token invalid_
+
+  ```bash
+  {
+      "message": "Invalid Token"
+  }
+  ```
+
+- status : 200 _Successed to insert data merchant_
+  ```bash
+  {
+      "message": "Data has been inserted"
+  }
+  ```
 
 ##### **5. Update merchant ( PUT /merchant/id )**
 
 Authorization: Bearer Token
-- token from login response *required
 
+- token from login response \*required
 
-*Result* : JSON 
-- status : 401 *Failed to update data when token isn't input*
+_Result_ : JSON
 
-    ```bash
-    {
-        "message": "Unauthorized"
-    }
-    ```
-- status : 401 *Failed to update data when token invalid*
+- status : 401 _Failed to update data when token isn't input_
 
-    ```bash
-    {
-        "message": "Invalid Token"
-    }
-    ```
-- status : 200 *Successed to update data merchant*
-    ```bash
-    {
-        "message": "Data has been updated"
-    }
-    ```
+  ```bash
+  {
+      "message": "Unauthorized"
+  }
+  ```
+
+- status : 401 _Failed to update data when token invalid_
+
+  ```bash
+  {
+      "message": "Invalid Token"
+  }
+  ```
+
+- status : 200 _Successed to update data merchant_
+  ```bash
+  {
+      "message": "Data has been updated"
+  }
+  ```
+
 ##### **6. Delete merchant ( DEL /merchant/id )**
 
 Authorization: Bearer Token
-- token from login response *required
 
+- token from login response \*required
 
-*Result* : JSON 
-- status : 401 *Failed to delete data when token isn't input*
+_Result_ : JSON
 
-    ```bash
-    {
-        "message": "Unauthorized"
-    }
-    ```
-- status : 401 *Failed to delete data when token invalid*
+- status : 401 _Failed to delete data when token isn't input_
 
-    ```bash
-    {
-        "message": "Invalid Token"
-    }
-    ```
-- status : 200 *Successed to delete data merchant*
-    ```bash
-    {
-        "message": "Data has been deleted"
-    }
-    ```
+  ```bash
+  {
+      "message": "Unauthorized"
+  }
+  ```
+
+- status : 401 _Failed to delete data when token invalid_
+
+  ```bash
+  {
+      "message": "Invalid Token"
+  }
+  ```
+
+- status : 200 _Successed to delete data merchant_
+  ```bash
+  {
+      "message": "Data has been deleted"
+  }
+  ```
+
 ##### **5. SOFT Delete merchant ( PUT /merchant/id )**
 
 Authorization: Bearer Token
-- token from login response *required
 
-*Parameters* : body
+- token from login response \*required
 
+_Parameters_ : body
 
     {
         "isDeleted": true,
         "deletedAt":"{{currentdate}}"
     }
 
+_Result_ : JSON
 
+- status : 401 _Failed to soft delete data when token isn't input_
 
-*Result* : JSON 
-- status : 401 *Failed to soft delete data when token isn't input*
+  ```bash
+  {
+      "message": "Unauthorized"
+  }
+  ```
 
-    ```bash
-    {
-        "message": "Unauthorized"
-    }
-    ```
-- status : 401 *Failed to soft delete data when token invalid*
+- status : 401 _Failed to soft delete data when token invalid_
 
-    ```bash
-    {
-        "message": "Invalid Token"
-    }
-    ```
-- status : 200 *Successed to soft delete data merchant*
-    ```bash
-    {
-        "message": "Data has been updated"
-    }
-    ```
+  ```bash
+  {
+      "message": "Invalid Token"
+  }
+  ```
+
+- status : 200 _Successed to soft delete data merchant_
+
+  ```bash
+  {
+      "message": "Data has been updated"
+  }
+  ```
 
 - It will run at **_localhost:3000_** & open in browser automatically! **Done!**
 
 #
 
-#### Danang Suyoko :love*letter: _dsuyoko@yahoo.com*
+#### Danang Suyoko :loveletter: _dsuyoko@yahoo.com*
 
 :octocat: [GitHub](https://github.com/dansuyoko) |
