@@ -114,7 +114,7 @@ _Result_ : JSON
   }
   ```
 
-- status : 400 _Login success_
+- status : 200 _Login success_
   ```bash
   {
   "massage": "Data is found",
@@ -242,6 +242,21 @@ Authorization: Bearer Token
 
 - token from login response \*required
 
+_Parameters_ : body
+
+    {
+        "key": value,
+        "updatedAt":"{{currentdate}}"
+    }
+
+_Pre-request Script_
+
+```
+var moment = require('moment');
+
+pm.environment.set('currentdate', moment().format(("YYYY-MM-DD HH:mm:ss")));
+```
+
 _Result_ : JSON
 
 - status : 401 _Failed to update data when token isn't input_
@@ -298,7 +313,7 @@ _Result_ : JSON
   }
   ```
 
-##### **5. SOFT Delete merchant ( PUT /merchant/id )**
+##### **7. SOFT Delete merchant ( PUT /merchant/id )**
 
 Authorization: Bearer Token
 
@@ -310,6 +325,14 @@ _Parameters_ : body
         "isDeleted": true,
         "deletedAt":"{{currentdate}}"
     }
+
+_Pre-request Script_
+
+```
+var moment = require('moment');
+
+pm.environment.set('currentdate', moment().format(("YYYY-MM-DD HH:mm:ss")));
+```
 
 _Result_ : JSON
 
@@ -356,7 +379,7 @@ _Result_ : JSON
   }
   ```
 
-- status : 400 _Login success_
+- status : 200 _Login success_
   ```bash
   {
   "massage": "Data is found",
@@ -370,14 +393,12 @@ _Result_ : JSON
 
 _Parameters_ : body
 
-- password **(required, min: 6)**
-- name **(required, min: 3, max 50)**
-- address **(required)**
-- join_date **(required, date)**
-- phone_number **(required, numeric)**
+- name **(required, min: 3, max: 50)**
+- quantity **(required, min:1, numeric)**
+- Price **(required, min: 10000, numeric)**
 - createdAt DEFAULT **current_timestamp()**
 
-Authorization: Bearer Token
+_Authorization_ : Bearer Token
 
 - token from login response **required**
 
@@ -406,19 +427,17 @@ _Result_ : JSON
   }
   ```
 
-##### **3. Get Product Active ( GET /merchant )**
+##### **3. Get Product Active ( GET /product )**
 
 _Parameters_ : body
 
-- password **(required, min: 6)**
-- name **(required, min: 3, max 50)**
-- address **(required)**
-- join_date **(required, date)**
-- phone_number **(required, numeric)**
+- name **(required, min: 3, max: 50)**
+- quantity **(required, min:1, numeric)**
+- Price **(required, min: 10000, numeric)**
 - createdAt DEFAULT **current_timestamp()**
 - isDeleted **false**
 
-Authorization: Bearer Token
+_Authorization_ : Bearer Token
 
 - token from login response **required**
 
@@ -440,16 +459,16 @@ _Result_ : JSON
   }
   ```
 
-- status : 200 _Successed to get data merchant_
+- status : 200 _Successed to get data product_
   ```bash
   {
       "message": "Data is found"
   }
   ```
 
-##### **4. Insert merchant ( POST /merchant )**
+##### **4. Insert product ( POST /product )**
 
-Authorization: Bearer Token
+_Authorization_ : Bearer Token
 
 - token from login response \*required
 
@@ -478,11 +497,26 @@ _Result_ : JSON
   }
   ```
 
-##### **5. Update merchant ( PUT /merchant/id )**
+##### **5. Update product ( PUT /product/id )**
 
-Authorization: Bearer Token
+_Authorization_ : Bearer Token
 
 - token from login response \*required
+
+_Parameters_ : body
+
+    {
+        "key": value,
+        "deletedAt":"{{currentdate}}"
+    }
+
+_Pre-request Script_
+
+```
+var moment = require('moment');
+
+pm.environment.set('currentdate', moment().format(("YYYY-MM-DD HH:mm:ss")));
+```
 
 _Result_ : JSON
 
@@ -502,14 +536,14 @@ _Result_ : JSON
   }
   ```
 
-- status : 200 _Successed to update data merchant_
+- status : 200 _Successed to update data product_
   ```bash
   {
       "message": "Data has been updated"
   }
   ```
 
-##### **6. Delete merchant ( DEL /merchant/id )**
+##### **6. Delete product ( DEL /product/id )**
 
 Authorization: Bearer Token
 
@@ -533,14 +567,14 @@ _Result_ : JSON
   }
   ```
 
-- status : 200 _Successed to delete data merchant_
+- status : 200 _Successed to delete data product_
   ```bash
   {
       "message": "Data has been deleted"
   }
   ```
 
-##### **5. SOFT Delete merchant ( PUT /merchant/id )**
+##### **7. SOFT Delete product ( PUT /product/id )**
 
 Authorization: Bearer Token
 
@@ -553,11 +587,19 @@ _Parameters_ : body
         "deletedAt":"{{currentdate}}"
     }
 
+_Pre-request Script_
+
+```
+var moment = require('moment');
+
+pm.environment.set('currentdate', moment().format(("YYYY-MM-DD HH:mm:ss")));
+```
+
 _Result_ : JSON
 
 - status : 401 _Failed to soft delete data when token isn't input_
 
-  ```bash
+  ```
   {
       "message": "Unauthorized"
   }
@@ -571,7 +613,7 @@ _Result_ : JSON
   }
   ```
 
-- status : 200 _Successed to soft delete data merchant_
+- status : 200 _Successed to soft delete data product_
 
   ```bash
   {
@@ -585,5 +627,6 @@ _Result_ : JSON
 
 #### Danang Suyoko
 
-:loveletter: dsuyoko@yahoo.com
+Email : dsuyoko@yahoo.com
+
 :octocat: [GitHub](https://github.com/dansuyoko) |
