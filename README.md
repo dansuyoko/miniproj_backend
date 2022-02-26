@@ -583,6 +583,7 @@ _Result_ : JSON
 
 #
 
-#### Danang Suyoko :loveletter: _dsuyoko@yahoo.com*
+#### Danang Suyoko
 
+:loveletter: dsuyoko@yahoo.com
 :octocat: [GitHub](https://github.com/dansuyoko) |
